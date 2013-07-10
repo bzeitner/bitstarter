@@ -7,11 +7,8 @@ app.get('/', function(request, response) {
 var t = 'test';
 console.log("got request");
 
-var buffer = new Buffer(16);
-var rs = fs.readFile('index.html', function(err, data) {
-console.log(data.toString());
-	buffer.write(data.toString());
-});
+var buffer = String(fs.readFileSync('index.html'));
+console.log("buffer : " + buffer.toString());
   response.send(buffer.toString());
 });
 
